@@ -1,0 +1,10 @@
+.page-continer {
+  display: flex;
+}
+.form-body {
+  padding: 20px 10px;
+}
+.form-body input {
+  display: block;
+  margin-top: 5px;
+}
