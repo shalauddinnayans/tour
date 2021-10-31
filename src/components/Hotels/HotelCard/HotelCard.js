@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HotelCard = ({ hotel }) => {
-  const { name, place, price, rating, imgUrl, review } = hotel;
+  const { _id, name, rating, review, place, price, imgUrl } = hotel;
   return (
     <div className="col">
       <div className="card h-100">
@@ -15,7 +16,9 @@ const HotelCard = ({ hotel }) => {
           </p>
         </div>
         <h3>BDT {price}/Night</h3>
-        <button>BOOK Now</button>
+        <Link to={`/hotelbooking/${_id}`}>
+          <button>BOOK Now</button>
+        </Link>
       </div>
     </div>
   );

@@ -2,9 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Footer.css";
 const Footer = () => {
-  const a = {
-    ab: "jdkfjlsd",
-  };
   return (
     <div className="footer">
       <div className="footet-items">

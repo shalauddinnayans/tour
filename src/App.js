@@ -10,9 +10,12 @@ import Header from "./components/Header/Header";
 import Home from "./components/Home/Home";
 import Hotels from "./components/Hotels/Hotels";
 import Login from "./components/Login/Login";
+import TourBooking from "./components/MyOrder/Booking/TourBooking";
+import HotelBooking from "./components/MyOrder/Booking/HotelBooking";
 import MyOrder from "./components/MyOrder/MyOrder";
 import NotFound from "./components/NotFound/NotFound";
 import Tours from "./components/Tours/Tours";
+import ManageAllOrders from "./components/ManageAllOrders/ManageAllOrders";
 
 function App() {
   return (
@@ -35,6 +38,12 @@ function App() {
           <Route path="/order">
             <MyOrder></MyOrder>
           </Route>
+          <Route path="/tourbooking/:tourId">
+            <TourBooking></TourBooking>
+          </Route>
+          <Route path="/hotelbooking/:hotelId">
+            <HotelBooking></HotelBooking>
+          </Route>
           <Route path="/add">
             <AddService></AddService>
           </Route>
@@ -44,7 +53,9 @@ function App() {
           <Route path="/addhotel">
             <AddHotel></AddHotel>
           </Route>
-          <Route path="/manageorder"></Route>
+          <Route path="/manageorder">
+            <ManageAllOrders></ManageAllOrders>
+          </Route>
           <Route path="/order">
             <MyOrder></MyOrder>
           </Route>

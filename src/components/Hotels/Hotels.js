@@ -3,17 +3,12 @@ import { useForm } from "react-hook-form";
 import HotelCard from "./HotelCard/HotelCard";
 
 const Hotels = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
-  console.log(errors);
+  const { register, handleSubmit } = useForm();
+  const onSubmit = (data) => {};
 
   const [hotels, setHotels] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/hotels")
+    fetch("https://desolate-brushlands-62727.herokuapp.com/hotels")
       .then((res) => res.json())
       .then((data) => setHotels(data));
   }, []);

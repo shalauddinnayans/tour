@@ -1,7 +1,8 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const TourCard = ({ tour }) => {
-  const { place, price, imgUrl } = tour;
+  const { _id, place, price, imgUrl } = tour;
   return (
     <div className="col">
       <div className="card h-100">
@@ -15,7 +16,9 @@ const TourCard = ({ tour }) => {
           </p> */}
         </div>
         <h3>BDT {price}/Night</h3>
-        <button>BOOK Now</button>
+        <Link to={`/tourbooking/${_id}`}>
+          <button>BOOK Now</button>
+        </Link>
       </div>
     </div>
   );

@@ -4,17 +4,12 @@ import TourCard from "./TourCard/TourCard";
 import "./Tours.css";
 
 const Tours = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {};
-  console.log(errors);
 
   const [tours, setTours] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/tours")
+    fetch("https://desolate-brushlands-62727.herokuapp.com/tours")
       .then((res) => res.json())
       .then((data) => setTours(data));
   }, []);

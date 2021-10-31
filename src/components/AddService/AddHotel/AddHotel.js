@@ -1,50 +1,52 @@
 import React from "react";
+import axios from "axios";
 import { useForm } from "react-hook-form";
 
 const AddHotel = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
-  console.log(errors);
-
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = (data) => {
+    axios.post("http://localhost:5000/hotels", data).then((res) => {
+      if (res.data.insertedId) {
+        alert("add successfully");
+        reset();
+      }
+    });
+  };
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           type="text"
           placeholder="Name"
-          {...register("Name", { required: true })}
+          {...register("name", { required: true })}
         />
         <input
           type="number"
           placeholder="Rating"
-          {...register("Rating", { required: true })}
+          {...register("rating", { required: true })}
         />
         <input
           type="number"
           placeholder="Review"
-          {...register("Review", { required: true })}
+          {...register("review", { required: true })}
         />
         <input
           type="text"
           placeholder="Place"
-          {...register("Place", { required: true })}
+          {...register("place", { required: true })}
         />
         <input
           type="number"
           placeholder="Price"
-          {...register("Price", { required: true })}
+          {...register("price", { required: true })}
         />
         <input
           type="url"
           placeholder="Image Url"
-          {...register("Image Url", { required: true })}
+          {...register("imageUrl", { required: true })}
         />
 
-        <input type="submit" />
+        <input type="submit" value="Submit" />
       </form>
     </div>
   );
