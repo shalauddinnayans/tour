@@ -10,13 +10,15 @@ const Booking = () => {
 
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    axios.post("http://localhost:5000/hotelorder", data).then((res) => {
-      if (res.data.insertedId) {
-        alert("added");
-        reset();
-        history.push("/order");
-      }
-    });
+    axios
+      .post("https://desolate-brushlands-62727.herokuapp.com/hotelorder", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          alert("added");
+          reset();
+          history.push("/order");
+        }
+      });
   };
   return (
     <div>

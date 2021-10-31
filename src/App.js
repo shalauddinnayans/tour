@@ -16,65 +16,68 @@ import MyOrder from "./components/MyOrder/MyOrder";
 import NotFound from "./components/NotFound/NotFound";
 import Tours from "./components/Tours/Tours";
 import ManageAllOrders from "./components/ManageAllOrders/ManageAllOrders";
+import AuthProvider from "./context/AuthProvider";
+import PrivateRoute from "./components/Login/PrivateRoute/PrivateRoute";
 
 function App() {
   return (
     <div className="App">
-      <Router>
-        <Header></Header>
-        <Switch>
-          <Route exact path="/">
-            <Home></Home>
-          </Route>
-          <Route path="/home">
-            <Home></Home>
-          </Route>
-          <Route path="/tour">
-            <Tours></Tours>
-          </Route>
-          <Route path="/hotel">
-            <Hotels></Hotels>
-          </Route>
-          <Route path="/order">
-            <MyOrder></MyOrder>
-          </Route>
-          <Route path="/tourbooking/:tourId">
-            <TourBooking></TourBooking>
-          </Route>
-          <Route path="/hotelbooking/:hotelId">
-            <HotelBooking></HotelBooking>
-          </Route>
-          <Route path="/add">
-            <AddService></AddService>
-          </Route>
-          <Route path="/addtour">
-            <AddTour></AddTour>
-          </Route>
-          <Route path="/addhotel">
-            <AddHotel></AddHotel>
-          </Route>
-          <Route path="/manageorder">
-            <ManageAllOrders></ManageAllOrders>
-          </Route>
-          <Route path="/order">
-            <MyOrder></MyOrder>
-          </Route>
-          <Route path="/contact">
-            <ContactUs></ContactUs>
-          </Route>
-          <Route path="/about">
-            <About></About>
-          </Route>
-          <Route path="/login">
-            <Login></Login>
-          </Route>
-          <Route path="*">
-            <NotFound></NotFound>
-          </Route>
-        </Switch>
-
-        <Footer></Footer>
-      </Router>
+      <AuthProvider>
+        <Router>
+          <Header></Header>
+          <Switch>
+            <Route exact path="/">
+              <Home></Home>
+            </Route>
+            <Route path="/home">
+              <Home></Home>
+            </Route>
+            <Route path="/tour">
+              <Tours></Tours>
+            </Route>
+            <Route path="/hotel">
+              <Hotels></Hotels>
+            </Route>
+            <PrivateRoute path="/order">
+              <MyOrder></MyOrder>
+            </PrivateRoute>
+            <PrivateRoute path="/tourbooking/:tourId">
+              <TourBooking></TourBooking>
+            </PrivateRoute>
+            <PrivateRoute path="/hotelbooking/:hotelId">
+              <HotelBooking></HotelBooking>
+            </PrivateRoute>
+            <PrivateRoute path="/add">
+              <AddService></AddService>
+            </PrivateRoute>
+            <PrivateRoute path="/addtour">
+              <AddTour></AddTour>
+            </PrivateRoute>
+            <PrivateRoute path="/addhotel">
+              <AddHotel></AddHotel>
+            </PrivateRoute>
+            <PrivateRoute path="/manageorder">
+              <ManageAllOrders></ManageAllOrders>
+            </PrivateRoute>
+            <PrivateRoute path="/order">
+              <MyOrder></MyOrder>
+            </PrivateRoute>
+            <Route path="/contact">
+              <ContactUs></ContactUs>
+            </Route>
+            <Route path="/about">
+              <About></About>
+            </Route>
+            <Route path="/login">
+              <Login></Login>
+            </Route>
+            <Route path="*">
+              <NotFound></NotFound>
+            </Route>
+          </Switch>
+          <Footer></Footer>
+        </Router>
+      </AuthProvider>
     </div>
   );
 }

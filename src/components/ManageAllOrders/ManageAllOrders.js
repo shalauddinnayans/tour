@@ -6,12 +6,12 @@ const ManageAllOrders = () => {
   const [tours, setTours] = useState([]);
   const [hotels, setHotels] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/tourorder")
+    fetch("https://desolate-brushlands-62727.herokuapp.com/tourorder")
       .then((res) => res.json())
       .then((data) => setTours(data));
   }, []);
   useEffect(() => {
-    fetch("http://localhost:5000/hotelorder")
+    fetch("https://desolate-brushlands-62727.herokuapp.com/hotelorder")
       .then((res) => res.json())
       .then((data) => setHotels(data));
   }, []);

@@ -6,14 +6,9 @@ const TourCard = ({ tour }) => {
   return (
     <div className="col">
       <div className="card h-100">
-        <img src="..." className="card-img-top" alt="..." />
+        <img src={imgUrl} className="card-img-top" alt="..." />
         <div className="card-body">
           <h5 className="card-title">{place}</h5>
-          {/* <h6>{place}</h6>
-          <p className="card-text">
-            <small>{rating}</small>
-            <small>({review} Reviews)</small>
-          </p> */}
         </div>
         <h3>BDT {price}/Night</h3>
         <Link to={`/tourbooking/${_id}`}>

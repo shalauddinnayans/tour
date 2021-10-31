@@ -11,33 +11,46 @@ import initializeAuthentication from "../Firebase/firebase.init";
 initializeAuthentication();
 
 const useFirebase = () => {
-  const [user, setUser] = useState();
-  const auth = getAuth();
-  const googleProvider = new GoogleAuthProvider();
+  const [user, setUser] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
 
-  const singInUsingGoogle = () => {
-    return signInWithPopup(auth, googleProvider);
+  const auth = getAuth();
+
+  const signInUsingGoogle = () => {
+    setIsLoading(true);
+    const googleProvider = new GoogleAuthProvider();
+
+    signInWithPopup(auth, googleProvider)
+      .then((result) => {
+        setUser(result.user);
+      })
+      .finally(() => setIsLoading(false));
   };
-  const logOut = () => {
-    signOut(auth).then(() => {
-      setUser({});
-    });
-  };
-  // observe whether user auth state changed or not
+
+  // observe user state change
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
+    const unsubscribed = onAuthStateChanged(auth, (user) => {
       if (user) {
         setUser(user);
       } else {
         setUser({});
       }
+      setIsLoading(false);
     });
-    return () => unsubscribe;
+    return () => unsubscribed;
   }, []);
+
+  const logOut = () => {
+    setIsLoading(true);
+    signOut(auth)
+      .then(() => {})
+      .finally(() => setIsLoading(false));
+  };
 
   return {
     user,
-    singInUsingGoogle,
+    isLoading,
+    signInUsingGoogle,
     logOut,
   };
 };

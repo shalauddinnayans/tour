@@ -5,12 +5,14 @@ import { useForm } from "react-hook-form";
 const AddTour = () => {
   const { register, handleSubmit, reset } = useForm();
   const onSubmit = (data) => {
-    axios.post("http://localhost:5000/tours", data).then((res) => {
-      if (res.data.insertedId) {
-        alert("add successfully");
-        reset();
-      }
-    });
+    axios
+      .post("https://desolate-brushlands-62727.herokuapp.com/tours", data)
+      .then((res) => {
+        if (res.data.insertedId) {
+          alert("add successfully");
+          reset();
+        }
+      });
   };
   return (
     <div>

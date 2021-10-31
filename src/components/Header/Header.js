@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Header = () => {
+  const { user, logOut } = useAuth();
   return (
     <div>
       <div>
@@ -54,13 +56,24 @@ const Header = () => {
                 </li>
               </ul>
               <div className="d-flex">
-                <small>Login As: shala uddin nayan</small>
-                <button className="btn btn-outline-success">
-                  <Link to="/order"> My Booing</Link>
-                </button>
-                <button className="btn btn-outline-success">
-                  <Link to="/login"> Login</Link>
-                </button>
+                {user?.email ? (
+                  <div>
+                    <small>Login As:{user?.displayName}</small>
+                    <button className="btn btn-outline-success">
+                      <Link to="/order"> My Booing</Link>
+                    </button>
+                    <button
+                      className="btn btn-outline-success"
+                      onClick={logOut}
+                    >
+                      Log Out
+                    </button>
+                  </div>
+                ) : (
+                  <button className="btn btn-outline-success">
+                    <Link to="/login"> Login</Link>
+                  </button>
+                )}
               </div>
             </div>
           </div>
